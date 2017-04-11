@@ -18,4 +18,22 @@ class PostsController < ApplicationController
 	  @post.save
 	  redirect_to post_path(@post)
 	end
+
+	def edit
+		@post = Post.find(params[:id])
+	end
+
+	def update
+		@post = Post.find(params[:id])
+		@post.update(title: params[:title], description: params[:description])
+		redirect_to post_path(@post)
+		# Query the database for the Post record that matches the :id passed to the route.
+		# Store the query in an instance variable.
+		# Update the values passed from the form (the update method
+			# here is the update method supplied by Active Record, not
+			# the update method we're creating).
+		# Save the changes in the database (update)
+		# Redirect the user to the show page so they can see the updated record.
+	end
+
 end
